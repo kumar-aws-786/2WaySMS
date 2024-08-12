@@ -1,0 +1,310 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "ca2d403e-d804-4b4a-9f33-21ee79a95b03",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": -102.4,
+      "y": -179.2
+    },
+    "ActionMetadata": {
+      "ca2d403e-d804-4b4a-9f33-21ee79a95b03": {
+        "position": {
+          "x": 0,
+          "y": -97.6
+        }
+      },
+      "7f3eef08-9335-4f7f-be01-8e8b19e6c72f": {
+        "position": {
+          "x": 142.4,
+          "y": 100
+        }
+      },
+      "4a4350ef-2e1d-451d-8c4a-7745e8b3d884": {
+        "position": {
+          "x": 676.8,
+          "y": 44
+        },
+        "parameters": {
+          "TimeLimitSeconds": {
+            "unit": 1
+          }
+        },
+        "timeoutUnit": {
+          "display": "Seconds",
+          "value": "second"
+        }
+      },
+      "d62506d1-b6a8-4005-8f0b-9479eb5a75c1": {
+        "position": {
+          "x": 925.6,
+          "y": -43.2
+        }
+      },
+      "c30dd88f-d2c4-493a-af36-886504254af6": {
+        "position": {
+          "x": 420.8,
+          "y": 119.2
+        },
+        "parameters": {
+          "Text": {
+            "useDynamic": true
+          },
+          "LexV2Bot": {
+            "AliasArn": {
+              "displayName": "TestBotAlias",
+              "useLexBotDropdown": true,
+              "lexV2BotName": "TwoWaySMS"
+            }
+          },
+          "LexSessionAttributes": {
+            "UserPhoneNumber": {
+              "useDynamic": true
+            }
+          }
+        },
+        "dynamicMetadata": {
+          "UserPhoneNumber": true
+        },
+        "useLexBotDropdown": true,
+        "lexV2BotName": "TwoWaySMS",
+        "lexV2BotAliasName": "TestBotAlias",
+        "useDynamic": true,
+        "conditionMetadata": [
+          {
+            "id": "1abd9bb9-8bde-474c-8bf3-164d8d41382b",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "booking"
+          },
+          {
+            "id": "c154893d-c6c9-46ec-b43d-f2fbe09bc5bc",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "FallbackIntent"
+          },
+          {
+            "id": "6a1b4119-fbda-41e8-9e8f-b6c829282485",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "talktoagent"
+          }
+        ]
+      },
+      "28a6040d-29b2-4c0d-8696-1d6a36a1882e": {
+        "position": {
+          "x": 1555.2,
+          "y": 144.8
+        }
+      },
+      "e580b585-bade-47b3-9ce0-70e96e5ade59": {
+        "position": {
+          "x": 1232.8,
+          "y": 412
+        }
+      },
+      "f84d5bc6-8e51-4bdd-aef8-198b849396c1": {
+        "position": {
+          "x": 807.2,
+          "y": 413.6
+        },
+        "parameters": {
+          "AgentId": {
+            "displayName": "psivaprasad@optimataxrelief.com (Sivaprasad Ponnaganti)"
+          }
+        },
+        "queue": {
+          "text": "psivaprasad@optimataxrelief.com (Sivaprasad Ponnaganti)"
+        }
+      }
+    },
+    "Annotations": [],
+    "name": "TwoWaySMS",
+    "description": "",
+    "type": "contactFlow",
+    "status": "PUBLISHED",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "FlowLoggingBehavior": "Enabled"
+      },
+      "Identifier": "ca2d403e-d804-4b4a-9f33-21ee79a95b03",
+      "Type": "UpdateFlowLoggingBehavior",
+      "Transitions": {
+        "NextAction": "7f3eef08-9335-4f7f-be01-8e8b19e6c72f"
+      }
+    },
+    {
+      "Parameters": {
+        "FlowAttributes": {
+          "message": {
+            "Value": "How can I help you?"
+          }
+        }
+      },
+      "Identifier": "7f3eef08-9335-4f7f-be01-8e8b19e6c72f",
+      "Type": "UpdateFlowAttributes",
+      "Transitions": {
+        "NextAction": "c30dd88f-d2c4-493a-af36-886504254af6",
+        "Errors": [
+          {
+            "NextAction": "28a6040d-29b2-4c0d-8696-1d6a36a1882e",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "TimeLimitSeconds": "3"
+      },
+      "Identifier": "4a4350ef-2e1d-451d-8c4a-7745e8b3d884",
+      "Type": "Wait",
+      "Transitions": {
+        "NextAction": "28a6040d-29b2-4c0d-8696-1d6a36a1882e",
+        "Conditions": [
+          {
+            "NextAction": "d62506d1-b6a8-4005-8f0b-9479eb5a75c1",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "WaitCompleted"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "28a6040d-29b2-4c0d-8696-1d6a36a1882e",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "FlowAttributes": {
+          "message": {
+            "Value": "Is there anything I can help you with?"
+          }
+        }
+      },
+      "Identifier": "d62506d1-b6a8-4005-8f0b-9479eb5a75c1",
+      "Type": "UpdateFlowAttributes",
+      "Transitions": {
+        "NextAction": "c30dd88f-d2c4-493a-af36-886504254af6",
+        "Errors": [
+          {
+            "NextAction": "28a6040d-29b2-4c0d-8696-1d6a36a1882e",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "$.FlowAttributes.message",
+        "LexV2Bot": {
+          "AliasArn": "arn:aws:lex:us-west-2:948940776453:bot-alias/PHIF6CHQJ7/TSTALIASID"
+        },
+        "LexSessionAttributes": {
+          "UserPhoneNumber": "$.CustomerEndpoint.Address"
+        }
+      },
+      "Identifier": "c30dd88f-d2c4-493a-af36-886504254af6",
+      "Type": "ConnectParticipantWithLexBot",
+      "Transitions": {
+        "NextAction": "28a6040d-29b2-4c0d-8696-1d6a36a1882e",
+        "Conditions": [
+          {
+            "NextAction": "4a4350ef-2e1d-451d-8c4a-7745e8b3d884",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "booking"
+              ]
+            }
+          },
+          {
+            "NextAction": "28a6040d-29b2-4c0d-8696-1d6a36a1882e",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "FallbackIntent"
+              ]
+            }
+          },
+          {
+            "NextAction": "f84d5bc6-8e51-4bdd-aef8-198b849396c1",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "talktoagent"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "28a6040d-29b2-4c0d-8696-1d6a36a1882e",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "28a6040d-29b2-4c0d-8696-1d6a36a1882e",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "28a6040d-29b2-4c0d-8696-1d6a36a1882e",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {},
+      "Identifier": "e580b585-bade-47b3-9ce0-70e96e5ade59",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "28a6040d-29b2-4c0d-8696-1d6a36a1882e",
+        "Errors": [
+          {
+            "NextAction": "28a6040d-29b2-4c0d-8696-1d6a36a1882e",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "28a6040d-29b2-4c0d-8696-1d6a36a1882e",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "AgentId": "arn:aws:connect:us-west-2:948940776453:instance/3972e77a-9bbc-4fb0-83c4-17507f4d569d/agent/89e16e97-fab3-44be-9f32-3c234750e06b"
+      },
+      "Identifier": "f84d5bc6-8e51-4bdd-aef8-198b849396c1",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "e580b585-bade-47b3-9ce0-70e96e5ade59",
+        "Errors": [
+          {
+            "NextAction": "28a6040d-29b2-4c0d-8696-1d6a36a1882e",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}
